@@ -14,6 +14,8 @@
 4. `npm run start` 启动本地服务器，打开 http://localhost:9000
 5. 修改代码
 6. `npm run build` 打包代码到 dist 目录
-
-
+7. 源码安装打包方式修改为:pnpm
+8. step1: npm install -g pnpm
+9. step2: pnpm install
+10. step3: pnpm run build
 
