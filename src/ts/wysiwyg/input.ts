@@ -155,6 +155,16 @@ export const input = (vditor: IVditor, range: Range, event?: InputEvent) => {
         html = vditor.lute.SpinVditorDOM(html);
         log("SpinVditorDOM", html, "result", vditor.options.debugger);
 
+        const emojiHint: IObject = vditor.options.hint.emoji ? vditor.lute.GetEmojis() as IObject : {};
+        Object.keys(emojiHint).forEach((keyName) => {
+            const searchPattern = `:${keyName}:`;
+            if (html.includes(searchPattern)) {
+                html = html.replace(
+                    new RegExp(searchPattern, 'g'),
+                    `<img src="${emojiHint[keyName]}" width="32" style="vertical-align: middle;" class="emoji" alt="${keyName}">`
+                );
+            }
+        });
 
         if (isWYSIWYGElement) {
             blockElement.innerHTML = html;
