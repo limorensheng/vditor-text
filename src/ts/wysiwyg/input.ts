@@ -147,9 +147,9 @@ export const input = (vditor: IVditor, range: Range, event?: InputEvent) => {
             html = html.replace(/<\/strong>/g, '');
         }
 
-        // if(html.includes('\n')){
-        //     html = html.replace(/\n\n/g, '<p data-block="0"><wbr></p>');
-        // }
+        if(html.includes('\n\n')){
+            html = html.replace(/\n\n/g, '<p data-block="0"><wbr></p>');
+        }
 
         log("SpinVditorDOM", html, "argument", vditor.options.debugger);
         html = vditor.lute.SpinVditorDOM(html);
