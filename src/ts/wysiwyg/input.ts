@@ -146,9 +146,10 @@ export const input = (vditor: IVditor, range: Range, event?: InputEvent) => {
             html = html.replace(/<strong data-marker="\*\*">/g, '');
             html = html.replace(/<\/strong>/g, '');
         }
-
-        if(html.includes('\n\n')){
+        let vditor_status = localStorage.getItem('vditor');
+        if(html.includes('\n\n') && vditor_status){
             html = html.replace(/\n\n/g, '<p data-block="0"><wbr></p>');
+            localStorage.removeItem('vditor');
         }
 
         log("SpinVditorDOM", html, "argument", vditor.options.debugger);

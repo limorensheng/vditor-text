@@ -125,7 +125,7 @@ class Vditor extends VditorMethod {
     /** 获取 Markdown 内容 */
     public getValue() {
         // let html = getMarkdown(this.vditor);
-        return getMarkdown(this.vditor);
+        return getMarkdown(this.vditor, true);
     }
 
     /** 获取编辑器当前编辑模式 */
