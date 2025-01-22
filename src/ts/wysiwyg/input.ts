@@ -156,6 +156,7 @@ export const input = (vditor: IVditor, range: Range, event?: InputEvent) => {
         html = vditor.lute.SpinVditorDOM(html);
         log("SpinVditorDOM", html, "result", vditor.options.debugger);
 
+        html = html.replace(/<s data-marker="~">(.*?)<\/s>/g, "~$1~");
         const emojiHint: IObject = vditor.options.hint.emoji ? vditor.lute.GetEmojis() as IObject : {};
         Object.keys(emojiHint).forEach((keyName) => {
             const searchPattern = `:${keyName}:`;
